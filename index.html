@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAARK TALKS - Concept Submission Review</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+
+         body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+         }
+
+         /* Header */
+         .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+         }
+
+         .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+         }
+
+         .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+         }
+
+         .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff0000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: box-shadow 0.3s, transform 0.3s;
+         }
+
+         .logo-icon:hover {
+            box-shadow: 0 4px 16px rgba(255,0,0,0.25);
+            transform: scale(1.08);
+         }
+
+         .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff0000 50%, #fff 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background-position 0.5s ease;
+            background-size: 200% 100%;
+         }
+
+         .logo:hover .logo-text {
+             background-position: -100% 0;
+         }
+
+         .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+         }
+
+         .nav-item a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+         }
+
+         .nav-item a:hover {
+            background: #ff0000;
+            color: #fff;
+            transform: translateY(-2px);
+         }
+
+         /* Hero Section */
+         .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            position: relative;
+         }
+
+         .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+         }
+
+         .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff0000, #ff7b7b, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+         }
+
+         .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.3s both;
+         }
+
+         .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s 0.6s both;
+         }
+
+         @keyframes fadeInUp {
+            from {
+               opacity: 0;
+               transform: translateY(50px);
+            }
+            to {
+               opacity: 1;
+               transform: translateY(0);
+            }
+         }
+
+         .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, #ff0000 60%, #b30000 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+            animation: fadeInUp 1s 0.9s both;
+            border: none;
+            letter-spacing: 1px;
+         }
+
+         .cta-button:hover {
+            background: linear-gradient(90deg, #b30000 60%, #ff0000 100%);
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.4);
+         }
+
+         /* Section Headers */
+         .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+         }
+
+         .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+         }
+
+         .section-title::before,
+         .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #ff0000, #b30000);
+         }
+
+         .section-title::before {
+            left: calc(50% - 150px);
+         }
+
+         .section-title::after {
+            right: calc(50% - 150px);
+         }
+
+        /* Movie Cards */
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .movie-card {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .movie-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 0, 0, 0.2);
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .movie-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: all 0.5s ease;
+        }
+
+        .movie-card:hover .movie-overlay {
+            transform: translateY(0);
+        }
+
+        .movie-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .movie-genre {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .movie-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff0000, #b30000);
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+            transition: all 0.5s ease;
+        }
+        
+        .movie-card:hover .movie-label {
+            opacity: 0;
+        }
+
+         /* Latest Videos Section */
+         .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+         }
+
+         .video-card {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+         }
+
+         .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+         }
+
+         .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+
+         .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+            transition: all 0.3s ease;
+         }
+
+         .video-card:hover .play-button {
+            background: #ff0000;
+            transform: scale(1.1);
+         }
+
+         .video-info {
+            padding: 1.5rem;
+         }
+
+         .video-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fff;
+         }
+
+         .video-channel {
+            color: #ccc;
+            font-size: 0.9rem;
+         }
+
+         /* Footer */
+         .footer {
+            background: #000;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+            border-top: 2px solid #ff0000;
+         }
+
+         .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+         }
+
+         .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff0000, #b30000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+         }
+
+         .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+         }
+
+         .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+         }
+
+         .footer-link:hover {
+            color: #ff0000;
+         }
+         
+        .copyright {
+            color: #555;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+         /* Google Form Style Card */
+        .contact-form-card {
+            background: #fff;
+            color: #222;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0;
+            overflow: hidden;
+        }
+        .contact-form-header {
+            background: linear-gradient(135deg, #d80808 0, #ff0000 100%);
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            text-align: left;
+        }
+        .contact-form-header .logo {
+            margin: 0 0 1rem 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-form-header .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .contact-form-header .header-title {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.2em;
+        }
+        .contact-form-header .header-subtitle {
+            color: #fff;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+        .contact-form-content {
+            padding: 2rem;
+        }
+        .contact-form-content .form-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #b30000;
+            margin-bottom: 1.2rem;
+        }
+        .contact-form-content .promotion {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            background: #f1f1f1;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #ff0000;
+        }
+        .contact-form-content .field-section {
+            margin-bottom: 1.5rem;
+        }
+        .contact-form-content .field-label {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .contact-form-content .field-label .required-star {
+            color: #d93025;
+            margin-left: 2px;
+        }
+        .contact-form-content input[type="text"],
+        .contact-form-content input[type="email"],
+        .contact-form-content input[type="tel"],
+        .contact-form-content select,
+        .contact-form-content textarea {
+            width: 100%;
+            background: #f8f9fa;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            padding: 12px 16px;
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .contact-form-content input:focus,
+        .contact-form-content select:focus,
+        .contact-form-content textarea:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+        }
+        .contact-form-content textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form-content .file-upload-section {
+            background: #f8f9fa;
+            border: 2px dashed #dadce0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .contact-form-content .file-upload-section:hover {
+            background-color: #f1f3f4;
+            border-color: #ff0000;
+        }
+        .contact-form-content .file-icon {
+            font-size: 2rem;
+            color: #ff0000;
+            margin-bottom: 8px;
+        }
+        .contact-form-content #file-name-display {
+            font-size: 1rem;
+            color: #5f6368;
+            font-weight: 500;
+        }
+        .contact-form-content input[type="file"] {
+            display: none;
+        }
+
+        .contact-form-content .checkbox-section {
+            margin: 1.2rem 0;
+        }
+        .contact-form-content .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+        }
+        .contact-form-content input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #ff0000;
+            margin-top: 2px;
+        }
+        .contact-form-content .checkbox-label {
+            font-size: 1rem;
+            color: #202124;
+            line-height: 1.5;
+        }
+        .contact-form-content .required-note {
+            color: #d93025;
+            font-size: 0.95rem;
+            margin: 10px 0;
+        }
+        .contact-form-content .button-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .contact-form-content .btn {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .contact-form-content .btn-primary {
+            background: #ff0000;
+            color: white;
+        }
+        .contact-form-content .btn-primary:hover {
+            background: #b30000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .contact-form-content .btn-secondary {
+            background: transparent;
+            color: #ff0000;
+        }
+        .contact-form-content .btn-secondary:hover {
+            background: #ffeeee;
+        }
+         
+        .contact-form-content .footer-disclaimer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #5f6368;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dadce0;
+        }
+        .contact-form-content .footer-link {
+            color: #ff0000;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .contact-form-content .footer-link:hover {
+            text-decoration: underline;
+        }
+         
+        @media (max-width: 700px) {
+            .contact-form-card {
+                margin: 100px 8px 30px 8px;
+            }
+            .contact-form-header, .contact-form-content {
+                padding: 1.2rem;
+            }
+        }
+
+         /* Responsive Design */
+         @media (max-width: 768px) {
+            .nav-menu {
+               display: none; /* Can be replaced with a hamburger menu */
+            }
+
+            .hero-title {
+               font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+               font-size: 1.2rem;
+            }
+
+            .movies-grid,
+            .videos-grid {
+               grid-template-columns: 1fr;
+            }
+
+            .section-title::before,
+            .section-title::after {
+               width: 50px;
+            }
+
+            .section-title::before {
+               left: calc(50% - 100px);
+            }
+
+            .section-title::after {
+               right: calc(50% - 100px);
+            }
+         }
+
+         /* Scroll animations */
+         .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+         }
+
+         .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+         }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="https://i.ibb.co/RTNJbSPd/Screenshot-2025-06-26-11-05-09-164-com-whatsapp-edit.jpg" alt="SPAARK TALKS Logo" class="logo-icon">
+                <div class="logo-text">SPAARK TALKS</div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home">Home</a></li>
+                    <li class="nav-item"><a href="#movies">Movies</a></li>
+                    <li class="nav-item"><a href="#videos">Videos</a></li>
+                    <li class="nav-item"><a href="#submit">Submit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Where Your Story Sparks to Life</h1>
+            <h2 class="hero-subtitle">The Telugu Voice of Youth Cinema</h2>
+            <p class="hero-description">
+                We believe every great film starts with a powerful concept. SPAARK TALKS is the platform for new-age filmmakers to get their stories seen and promoted. Submit your vision, and let's create the future of cinema together.
+            </p>
+            <a href="#submit" class="cta-button">SUBMIT YOUR CONCEPT</a>
+        </div>
+    </section>
+    
+    <section id="movies" class="section">
+        <h2 class="section-title fade-in">Promoted Films</h2>
+        <div class="movies-grid">
+            <div class="movie-card fade-in">
+                <div class="movie-poster" style="background-image: url('https://images.unsplash.com/photo-1627843563095-2df978262404?q=80&w=1974&auto=format&fit=crop');">
+                    <div class="movie-label">Kalki 2898 AD</div>
+                    <div class="movie-overlay">
+                        <h3 class="movie-title">Kalki 2898 AD</h3>
+                        <p class="movie-genre">Sci-Fi / Action</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card fade-in" style="transition-delay: 0.2s;">
+                <div class="movie-poster" style="background-image: url('https://images.unsplash.com/photo-1574281358312-706a8afd1181?q=80&w=1974&auto=format&fit=crop');">
+                    <div class="movie-label">Color Photo</div>
+                     <div class="movie-overlay">
+                        <h3 class="movie-title">Color Photo</h3>
+                        <p class="movie-genre">Drama / Romance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card fade-in" style="transition-delay: 0.4s;">
+                <div class="movie-poster" style="background-image: url('https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=1974&auto=format&fit=crop');">
+                     <div class="movie-label">Pushpa</div>
+                     <div class="movie-overlay">
+                        <h3 class="movie-title">Pushpa</h3>
+                        <p class="movie-genre">Action / Thriller</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="section">
+        <h2 class="section-title fade-in">Latest Videos</h2>
+        <div class="videos-grid">
+            <div class="video-card fade-in">
+                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1598797834304-a6949b98687a?q=80&w=2070&auto=format&fit=crop');">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Behind the Scenes of 'Mirage'</h3>
+                    <p class="video-channel">SPAARK TALKS Originals</p>
+                </div>
+            </div>
+            <div class="video-card fade-in" style="transition-delay: 0.2s;">
+                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1517604931442-7e0c8ed29636?q=80&w=2070&auto=format&fit=crop');">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Director Interview: The Art of Storytelling</h3>
+                    <p class="video-channel">Filmmaker Spotlight</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="submit" class="section">
+        <div class="contact-form-card fade-in">
+            <div class="contact-form-header">
+                <div class="logo">
+                    <img src="https://i.ibb.co/RTNJbSPd/Screenshot-2025-06-26-11-05-09-164-com-whatsapp-edit.jpg" alt="spaark TALKS">
+                </div>
+                <div class="header-title">SPAARK TALKS</div>
+                <div class="header-subtitle">TELUGU VOICE OF YOUTH</div>
+            </div>
+            <div class="contact-form-content">
+                <form id="contact-form" enctype="multipart/form-data" autocomplete="off" novalidate>
+                    <h1 class="form-title">Concept Submission Release Form</h1>
+                    <div class="promotion">
+                         SPAARK TALKS is a launchpad for short film and new-age filmmakers. We promote films based on the strength of their concept, across any genre. Share your idea, and we'll contact you via phone or email to discuss the next steps.
+                    </div>
+
+                    <div class="field-section">
+                        <label for="fullName" class="field-label">Full Name <span class="required-star">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="field-section">
+                        <label for="email" class="field-label">Email Address <span class="required-star">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="field-section">
+                        <label for="phone" class="field-label">Mobile Number <span class="required-star">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your 10-digit mobile number" required>
+                    </div>
+                    
+                    <div class="field-section">
+                        <label for="filmTitle" class="field-label">Film Title <span class="required-star">*</span></label>
+                        <input type="text" id="filmTitle" name="filmTitle" placeholder="The title of your film" required>
+                    </div>
+                    
+                    <div class="field-section">
+                        <label for="genre" class="field-label">Genre <span class="required-star">*</span></label>
+                        <select id="genre" name="genre" required>
+                            <option value="" disabled selected>Select a genre</option>
+                            <option value="Action">Action</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Sci-Fi">Sci-Fi</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field-section">
+                        <label for="synopsis" class="field-label">Synopsis / Logline <span class="required-star">*</span></label>
+                        <textarea id="synopsis" name="synopsis" placeholder="Briefly describe your concept (max 2-3 paragraphs)" required></textarea>
+                    </div>
+                    
+                    <div class="field-section">
+                        <label class="field-label">Concept Document / Script (PDF, DOCX) <span class="required-star">*</span></label>
+                        <label for="fileUpload" class="file-upload-section">
+                             <div class="file-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                             <div id="file-name-display">Click to upload your file</div>
+                        </label>
+                        <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.doc,.docx" required>
+                    </div>
+
+                    <div class="checkbox-section">
+                        <div class="checkbox-container">
+                             <input type="checkbox" id="agreement" name="agreement" required>
+                             <label for="agreement" class="checkbox-label">
+                                I acknowledge that this is an original concept and I have the right to submit it. I agree to allow SPAARK TALKS to review my submission. <span class="required-star">*</span>
+                             </label>
+                        </div>
+                    </div>
+                    
+                     <div class="required-note">* Indicates required question</div>
+
+                    <div class="button-section">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Clear form</button>
+                    </div>
+
+                    <div class="footer-disclaimer">
+                        Never submit passwords through this form. <br>
+                        This content is created and maintained by SPAARK TALKS.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">SPAARK TALKS</div>
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Home</a>
+                <a href="#movies" class="footer-link">Movies</a>
+                <a href="#videos" class="footer-link">Videos</a>
+                <a href="#submit" class="footer-link">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 SPAARK TALKS. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // --- Scroll Fade-in Animation ---
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+        threshold: 0.2, // Trigger when 20% of the element is visible
+        rootMargin: "0px 0px -50px 0px" // Start animating a bit before it's fully in view
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('visible');
+                appearOnScroll.unobserve(entry.target); // Stop observing once it's visible
+            }
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+    
+    // --- Smooth Scrolling for Nav Links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // --- File Input UI Update ---
+    const fileInput = document.getElementById('fileUpload');
+    const fileNameDisplay = document.getElementById('file-name-display');
+    
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+            fileNameDisplay.textContent = this.files[0].name;
+        } else {
+            fileNameDisplay.textContent = 'Click to upload your file';
+        }
+    });
+
+    // --- Form Submission Handling ---
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Stop the form from submitting the traditional way
+
+        // Basic validation check
+        let isValid = form.checkValidity();
+        if (!isValid) {
+            // If you want more advanced validation, you can add messages here
+            alert('Please fill out all required fields.');
+            return;
+        }
+
+        // Create a FormData object from the form
+        const formData = new FormData(form);
+
+        // --- DEMONSTRATION: Log data to console ---
+        // In a real application, you would send this 'formData' to a server
+        // using the fetch API.
+        
+        console.log('--- Form Submission Data ---');
+        for (let [key, value] of formData.entries()) {
+            if (value instanceof File) {
+                console.log(`${key}: ${value.name} (Size: ${value.size} bytes)`);
+            } else {
+                console.log(`${key}: ${value}`);
+            }
+        }
+        console.log('----------------------------');
+
+        // Show a success message and reset the form
+        alert('Thank you for your submission! We will review your concept and get back to you soon.');
+        form.reset();
+        fileNameDisplay.textContent = 'Click to upload your file';
+    });
+    
+    // --- Form Reset Handling ---
+    form.addEventListener('reset', function() {
+        // Delay resetting the file name display to ensure the form fields clear first
+        setTimeout(() => {
+            fileNameDisplay.textContent = 'Click to upload your file';
+        }, 0);
+    });
+
+});
+</script>
+
+</body>
+</html>
