@@ -151,14 +151,8 @@
          }
 
          @keyframes fadeInUp {
-            from {
-               opacity: 0;
-               transform: translateY(50px);
-            }
-            to {
-               opacity: 1;
-               transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
          }
 
          .cta-button {
@@ -188,7 +182,7 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            scroll-margin-top: 100px; /* Fix for header covering title */
+            scroll-margin-top: 100px;
          }
 
          .section-title {
@@ -207,14 +201,8 @@
             height: 2px;
             background: linear-gradient(90deg, #ff0000, #b30000);
          }
-
-         .section-title::before {
-            left: calc(50% - 150px);
-         }
-
-         .section-title::after {
-            right: calc(50% - 150px);
-         }
+         .section-title::before { left: calc(50% - 150px); }
+         .section-title::after { right: calc(50% - 150px); }
 
         /* Movie Cards */
         .movies-grid {
@@ -223,449 +211,149 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-
         .movie-card {
-            display: block;
-            text-decoration: none;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: block; text-decoration: none; background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 20px; overflow: hidden; transition: all 0.5s ease; position: relative;
+            cursor: pointer; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-
-        .movie-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(255, 0, 0, 0.2);
+        .movie-card:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 25px 50px rgba(255, 0, 0, 0.2); }
+        .movie-poster { width: 100%; height: 450px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+        .movie-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 2rem; transform: translateY(100%); transition: all 0.5s ease;
         }
-
-        .movie-poster {
-            width: 100%;
-            height: 450px; /* Increased height for better poster aspect ratio */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
+        .movie-card:hover .movie-overlay { transform: translateY(0); }
+        .movie-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #fff; }
+        .movie-genre { color: #ccc; margin-bottom: 1rem; }
+        .movie-label { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(45deg, #ff0000, #b30000);
+            color: #fff; padding: 10px 30px; border-radius: 25px; font-weight: bold; font-size: 0.9rem;
+            letter-spacing: 1px; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4); transition: all 0.5s ease;
+            text-align: center; min-width: 150px;
         }
-
-        .movie-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-            padding: 2rem;
-            transform: translateY(100%);
-            transition: all 0.5s ease;
-        }
-
-        .movie-card:hover .movie-overlay {
-            transform: translateY(0);
-        }
-
-        .movie-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .movie-genre {
-            color: #ccc;
-            margin-bottom: 1rem;
-        }
-
-        .movie-label {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff0000, #b30000);
-            color: #fff;
-            padding: 10px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
-            transition: all 0.5s ease;
-            text-align: center;
-            min-width: 150px;
-        }
-        
-        .movie-card:hover .movie-label {
-            opacity: 0;
-        }
+        .movie-card:hover .movie-label { opacity: 0; }
 
          /* Latest Videos Section */
-         .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+         .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem; }
+         .video-card { background: linear-gradient(145deg, #2a2a2a, #1a1a1a); border-radius: 15px; overflow: hidden; transition: all 0.3s ease; cursor: pointer; }
+         .video-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2); }
+         .video-thumbnail { width: 100%; height: 200px; background-size: cover; background-position: center; position: relative;
+            display: flex; align-items: center; justify-content: center;
          }
-
-         .video-card {
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
+         .play-button { width: 60px; height: 60px; background: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 24px; color: #fff; transition: all 0.3s ease;
          }
-
-         .video-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
-         }
-
-         .video-thumbnail {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-         }
-
-         .play-button {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 0, 0, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #fff;
-            transition: all 0.3s ease;
-         }
-
-         .video-card:hover .play-button {
-            background: #ff0000;
-            transform: scale(1.1);
-         }
-
-         .video-info {
-            padding: 1.5rem;
-         }
-
-         .video-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #fff;
-         }
-
-         .video-channel {
-            color: #ccc;
-            font-size: 0.9rem;
-         }
+         .video-card:hover .play-button { background: #ff0000; transform: scale(1.1); }
+         .video-info { padding: 1.5rem; }
+         .video-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: #fff; }
+         .video-channel { color: #ccc; font-size: 0.9rem; }
          
         /* Video Modal (Lightbox) */
-        .video-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            display: none; /* Hidden by default */
-            align-items: center;
-            justify-content: center;
+        .video-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center;
         }
-
-        .video-modal-content {
-            position: relative;
-            width: 90%;
-            max-width: 900px;
-            aspect-ratio: 16 / 9;
-            background: #000;
-        }
-
-        .video-modal-content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            font-size: 2rem;
-            color: #fff;
-            cursor: pointer;
-        }
+        .video-modal-content { position: relative; width: 90%; max-width: 900px; aspect-ratio: 16 / 9; background: #000; }
+        .video-modal-content iframe { width: 100%; height: 100%; border: none; }
+        .close-modal { position: absolute; top: -40px; right: 0; font-size: 2rem; color: #fff; cursor: pointer; }
 
 
          /* Footer */
-         .footer {
-            background: #000;
-            padding: 3rem 2rem 1rem;
-            text-align: center;
-            border-top: 2px solid #ff0000;
+         .footer { background: #000; padding: 3rem 2rem 1rem; text-align: center; border-top: 2px solid #ff0000; }
+         .footer-content { max-width: 1200px; margin: 0 auto; }
+         .footer-logo { font-size: 2rem; font-weight: bold; margin-bottom: 1rem; background: linear-gradient(45deg, #ff0000, #b30000);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
          }
+         .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+         .footer-link { color: #ccc; text-decoration: none; transition: color 0.3s ease; }
+         .footer-link:hover { color: #ff0000; }
+         .copyright { color: #555; font-size: 0.9rem; margin-top: 2rem; }
 
-         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-         }
-
-         .footer-logo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ff0000, #b30000);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-         }
-
-         .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-         }
-
-         .footer-link {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-         }
-
-         .footer-link:hover {
-            color: #ff0000;
-         }
-         
-        .copyright {
-            color: #555;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-         /* Google Form Style Card */
+         /* --- DARK THEME FORM STYLES START --- */
         .contact-form-card {
-            background: #fff;
-            color: #222;
+            background: #2c2c2c;
+            color: #f0f0f0;
             border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
             max-width: 700px;
             margin: 40px auto;
             padding: 0;
             overflow: hidden;
+            border: 1px solid #444;
         }
         .contact-form-header {
             background: linear-gradient(135deg, #d80808 0, #ff0000 100%);
-            padding: 2.5rem 2rem 1.5rem 2rem;
-            text-align: left;
+            padding: 2rem; text-align: left;
         }
-        .contact-form-header .logo {
-            margin: 0 0 1rem 0;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .contact-form-header .logo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
-        .contact-form-header .header-title {
-            color: #fff;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 0.2em;
-        }
-        .contact-form-header .header-subtitle {
-            color: #fff;
-            font-size: 1.1rem;
-            opacity: 0.85;
-        }
-        .contact-form-content {
-            padding: 2rem;
-        }
-        .contact-form-content .form-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #b30000;
-            margin-bottom: 1.2rem;
-        }
-        .contact-form-content .promotion {
-            color: #333;
-            font-size: 1rem;
-            margin-bottom: 1.2rem;
-            background: #f1f1f1;
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #ff0000;
-        }
-        .contact-form-content .field-section {
-            margin-bottom: 1.5rem;
-        }
-        .contact-form-content .field-label {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .contact-form-content .field-label .required-star {
-            color: #d93025;
-            margin-left: 2px;
-        }
+        .contact-form-header .logo { margin: 0 0 1rem 0; width: 60px; height: 60px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .contact-form-header .logo img { width: 100%; height: 100%; border-radius: 50%; }
+        .contact-form-header .header-title { color: #fff; font-size: 2rem; font-weight: bold; margin-bottom: 0.2em; }
+        .contact-form-header .header-subtitle { color: #fff; font-size: 1.1rem; opacity: 0.85; }
+        
+        .contact-form-content { padding: 2rem; }
+        .contact-form-content .form-title { font-size: 1.3rem; font-weight: 600; color: #ff4d4d; margin-bottom: 1.2rem; }
+        .contact-form-content .promotion { color: #ccc; font-size: 1rem; margin-bottom: 1.2rem; background: #333; padding: 1rem; border-radius: 8px; border-left: 4px solid #ff0000; }
+        .contact-form-content .field-section { margin-bottom: 1.5rem; }
+        .contact-form-content .field-label { font-size: 1rem; color: #e0e0e0; font-weight: 500; margin-bottom: 0.5rem; display: block; }
+        .contact-form-content .field-label .required-star { color: #ff4d4d; margin-left: 2px; }
+
         .contact-form-content input[type="text"],
         .contact-form-content input[type="email"],
         .contact-form-content input[type="tel"],
         .contact-form-content select,
         .contact-form-content textarea {
             width: 100%;
-            background: #f8f9fa;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
-            padding: 12px 16px;
-            font-size: 1rem;
-            color: #333;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #3a3a3a;
+            border: 1px solid #555;
+            color: #fff;
+            border-radius: 4px; padding: 12px 16px; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .contact-form-content input::placeholder,
+        .contact-form-content textarea::placeholder {
+            color: #888;
         }
         .contact-form-content input:focus,
         .contact-form-content select:focus,
         .contact-form-content textarea:focus {
             outline: none;
-            border-color: #ff0000;
-            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+            border-color: #ff4d4d;
+            box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.5);
         }
-        .contact-form-content textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
+        .contact-form-content textarea { min-height: 120px; resize: vertical; }
 
         .contact-form-content .file-upload-section {
-            background: #f8f9fa;
-            border: 2px dashed #dadce0;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
+            background: #3a3a3a;
+            border: 2px dashed #666;
+            border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; transition: background-color 0.3s, border-color 0.3s;
         }
-        .contact-form-content .file-upload-section:hover {
-            background-color: #f1f3f4;
-            border-color: #ff0000;
-        }
-        .contact-form-content .file-icon {
-            font-size: 2rem;
-            color: #ff0000;
-            margin-bottom: 8px;
-        }
-        .contact-form-content #file-name-display {
-            font-size: 1rem;
-            color: #5f6368;
-            font-weight: 500;
-        }
-        .contact-form-content input[type="file"] {
-            display: none;
-        }
+        .contact-form-content .file-upload-section:hover { background-color: #444; border-color: #ff4d4d; }
+        .contact-form-content .file-icon { font-size: 2rem; color: #ff4d4d; margin-bottom: 8px; }
+        .contact-form-content #file-name-display { font-size: 1rem; color: #aaa; font-weight: 500; }
+        .contact-form-content input[type="file"] { display: none; }
 
-        .contact-form-content .checkbox-section {
-            margin: 1.2rem 0;
+        .contact-form-content .checkbox-section { margin: 1.2rem 0; }
+        .contact-form-content .checkbox-container { display: flex; align-items: flex-start; gap: 10px; padding: 10px; }
+        .contact-form-content input[type="checkbox"] { width: 18px; height: 18px; accent-color: #ff4d4d; margin-top: 2px; }
+        .contact-form-content .checkbox-label { font-size: 1rem; color: #e0e0e0; line-height: 1.5; }
+        .contact-form-content .required-note { color: #ff4d4d; font-size: 0.95rem; margin: 10px 0; }
+        
+        .contact-form-content .button-section { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
+        .contact-form-content .btn { padding: 10px 22px; border: none; border-radius: 4px; font-size: 1rem; font-weight: 500; cursor: pointer;
+            transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.5px;
         }
-        .contact-form-content .checkbox-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 10px;
-        }
-        .contact-form-content input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #ff0000;
-            margin-top: 2px;
-        }
-        .contact-form-content .checkbox-label {
-            font-size: 1rem;
-            color: #202124;
-            line-height: 1.5;
-        }
-        .contact-form-content .required-note {
-            color: #d93025;
-            font-size: 0.95rem;
-            margin: 10px 0;
-        }
-        .contact-form-content .button-section {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .contact-form-content .btn {
-            padding: 10px 22px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .contact-form-content .btn-primary {
-            background: #ff0000;
-            color: white;
-        }
-        .contact-form-content .btn-primary:hover {
-            background: #b30000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
-        .contact-form-content .btn-secondary {
-            background: transparent;
-            color: #ff0000;
-        }
-        .contact-form-content .btn-secondary:hover {
-            background: #ffeeee;
-        }
+        .contact-form-content .btn-primary { background: #ff0000; color: white; }
+        .contact-form-content .btn-primary:hover { background: #b30000; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        .contact-form-content .btn-secondary { background: transparent; color: #ff4d4d; }
+        .contact-form-content .btn-secondary:hover { background: rgba(255, 77, 77, 0.1); }
          
-        .contact-form-content .footer-disclaimer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #5f6368;
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #dadce0;
-        }
-        .contact-form-content .footer-link {
-            color: #ff0000;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-        .contact-form-content .footer-link:hover {
-            text-decoration: underline;
-        }
+        .contact-form-content .footer-disclaimer { text-align: center; font-size: 0.9rem; color: #999; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #555; }
+        /* --- DARK THEME FORM STYLES END --- */
          
         @media (max-width: 700px) {
-            .contact-form-card {
-                margin: 100px 8px 30px 8px;
-            }
-            .contact-form-header, .contact-form-content {
-                padding: 1.2rem;
-            }
+            .contact-form-card { margin: 100px 8px 30px 8px; }
+            .contact-form-header, .contact-form-content { padding: 1.2rem; }
         }
 
          /* Responsive Design */
          @media (max-width: 768px) {
-            .nav-menu {
-               display: none; /* Can be replaced with a hamburger menu */
-            }
+            .nav-menu { display: none; }
             .hero-title { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1.2rem; }
             .movies-grid, .videos-grid { grid-template-columns: 1fr; }
@@ -676,16 +364,8 @@
          }
 
          /* Scroll animations */
-         .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-         }
-
-         .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-         }
+         .fade-in { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+         .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -722,7 +402,7 @@
         <h2 class="section-title fade-in">Promoted Films</h2>
         <div class="movies-grid">
             <a href="https://www.imdb.com/title/tt12735488/" target="_blank" class="movie-card fade-in">
-                <div class="movie-poster" style="background-image: url('https://i.ibb.co/F83Wc7B/kalki-poster.jpg');">
+                <div class="movie-poster" style="background-image: url('https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/kalki.webp');">
                     <div class="movie-label">Kalki 2898 AD</div>
                     <div class="movie-overlay">
                         <h3 class="movie-title">Kalki 2898 AD</h3>
@@ -730,8 +410,8 @@
                     </div>
                 </div>
             </a>
-            <a href="https://www.imdb.com/title/tt12443008/" target="_blank" class="movie-card fade-in" style="transition-delay: 0.2s;">
-                <div class="movie-poster" style="background-image: url('https://i.ibb.co/vVjT8zN/color-photo-poster.jpg');">
+            <a href="https://www.imdb.com/title/tt13097434/" target="_blank" class="movie-card fade-in" style="transition-delay: 0.2s;">
+                <div class="movie-poster" style="background-image: url('https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/colorphoto.jpeg');">
                     <div class="movie-label">Color Photo</div>
                      <div class="movie-overlay">
                         <h3 class="movie-title">Color Photo</h3>
@@ -740,7 +420,7 @@
                 </div>
             </a>
             <a href="https://www.imdb.com/title/tt9389998/" target="_blank" class="movie-card fade-in" style="transition-delay: 0.4s;">
-                <div class="movie-poster" style="background-image: url('https://i.ibb.co/3k5fTq8/pushpa-poster.jpg');">
+                <div class="movie-poster" style="background-image: url('https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/pushpa.webp');">
                      <div class="movie-label">Pushpa: The Rise</div>
                      <div class="movie-overlay">
                         <h3 class="movie-title">Pushpa: The Rise</h3>
@@ -754,8 +434,8 @@
     <section id="videos" class="section">
         <h2 class="section-title fade-in">Latest Videos</h2>
         <div class="videos-grid">
-            <div class="video-card fade-in" data-youtube-id="clU8XX843iE">
-                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/clU8XX843iE/maxresdefault.jpg');">
+            <div class="video-card fade-in" data-youtube-id="kQDd1FFd8_g">
+                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/kQDd1FFd8_g/maxresdefault.jpg');">
                     <div class="play-button"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="video-info">
@@ -790,7 +470,6 @@
                     <div class="promotion">
                          SPAARK TALKS is a launchpad for short film and new-age filmmakers. We promote films based on the strength of their concept, across any genre. Share your idea, and we'll contact you via phone or email to discuss the next steps.
                     </div>
-
                     <div class="field-section">
                         <label for="fullName" class="field-label">Full Name <span class="required-star">*</span></label>
                         <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
@@ -840,8 +519,7 @@
                         <button type="reset" class="btn btn-secondary">Clear form</button>
                     </div>
                     <div class="footer-disclaimer">
-                        Never submit passwords through this form. <br>
-                        This content is created and maintained by SPAARK TALKS.
+                        Never submit passwords through this form.
                     </div>
                 </form>
             </div>
@@ -893,6 +571,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if(fileInput) {
         fileInput.addEventListener('change', function() {
             fileNameDisplay.textContent = this.files.length > 0 ? this.files[0].name : 'Click to upload your file';
+            fileNameDisplay.style.color = this.files.length > 0 ? '#e0e0e0' : '#aaa';
         });
     }
 
@@ -914,9 +593,13 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Thank you for your submission! We will get back to you soon.');
             form.reset();
             fileNameDisplay.textContent = 'Click to upload your file';
+            fileNameDisplay.style.color = '#aaa';
         });
         form.addEventListener('reset', () => {
-             setTimeout(() => fileNameDisplay.textContent = 'Click to upload your file', 0);
+             setTimeout(() => {
+                fileNameDisplay.textContent = 'Click to upload your file';
+                fileNameDisplay.style.color = '#aaa';
+             }, 0);
         });
     }
     
@@ -946,7 +629,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     closeModalBtn.addEventListener('click', closeModal);
-    // Close modal if user clicks on the overlay background
     videoModal.addEventListener('click', (event) => {
         if (event.target === videoModal) {
             closeModal();
