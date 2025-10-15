@@ -12,6 +12,10 @@
             box-sizing: border-box;
          }
 
+         html {
+            scroll-behavior: smooth;
+         }
+
          body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -43,6 +47,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            text-decoration: none;
          }
 
          .logo-icon {
@@ -58,7 +63,7 @@
             transition: box-shadow 0.3s, transform 0.3s;
          }
 
-         .logo-icon:hover {
+         .logo:hover .logo-icon {
             box-shadow: 0 4px 16px rgba(255,0,0,0.25);
             transform: scale(1.08);
          }
@@ -68,6 +73,7 @@
             font-weight: bold;
             background: linear-gradient(90deg, #ff0000 50%, #fff 50%);
             -webkit-background-clip: text;
+            color: transparent;
             -webkit-text-fill-color: transparent;
             transition: background-position 0.5s ease;
             background-size: 200% 100%;
@@ -182,6 +188,7 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            scroll-margin-top: 100px; /* Fix for header covering title */
          }
 
          .section-title {
@@ -218,6 +225,8 @@
         }
 
         .movie-card {
+            display: block;
+            text-decoration: none;
             background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
             border-radius: 20px;
             overflow: hidden;
@@ -234,7 +243,7 @@
 
         .movie-poster {
             width: 100%;
-            height: 400px;
+            height: 450px; /* Increased height for better poster aspect ratio */
             background-size: cover;
             background-position: center;
             position: relative;
@@ -282,6 +291,8 @@
             letter-spacing: 1px;
             box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
             transition: all 0.5s ease;
+            text-align: center;
+            min-width: 150px;
         }
         
         .movie-card:hover .movie-label {
@@ -353,6 +364,45 @@
             color: #ccc;
             font-size: 0.9rem;
          }
+         
+        /* Video Modal (Lightbox) */
+        .video-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        .video-modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
 
          /* Footer */
          .footer {
@@ -616,32 +666,13 @@
             .nav-menu {
                display: none; /* Can be replaced with a hamburger menu */
             }
-
-            .hero-title {
-               font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-               font-size: 1.2rem;
-            }
-
-            .movies-grid,
-            .videos-grid {
-               grid-template-columns: 1fr;
-            }
-
-            .section-title::before,
-            .section-title::after {
-               width: 50px;
-            }
-
-            .section-title::before {
-               left: calc(50% - 100px);
-            }
-
-            .section-title::after {
-               right: calc(50% - 100px);
-            }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .movies-grid, .videos-grid { grid-template-columns: 1fr; }
+            .section-title::before, .section-title::after { width: 50px; }
+            .section-title::before { left: calc(50% - 100px); }
+            .section-title::after { right: calc(50% - 100px); }
+            .close-modal { right: 10px; top: -35px; }
          }
 
          /* Scroll animations */
@@ -690,55 +721,55 @@
     <section id="movies" class="section">
         <h2 class="section-title fade-in">Promoted Films</h2>
         <div class="movies-grid">
-            <div class="movie-card fade-in">
-                <div class="movie-poster" style="background-image: url('https://images.unsplash.com/photo-1627843563095-2df978262404?q=80&w=1974&auto=format&fit=crop');">
+            <a href="https://www.imdb.com/title/tt12735488/" target="_blank" class="movie-card fade-in">
+                <div class="movie-poster" style="background-image: url('https://i.ibb.co/F83Wc7B/kalki-poster.jpg');">
                     <div class="movie-label">Kalki 2898 AD</div>
                     <div class="movie-overlay">
                         <h3 class="movie-title">Kalki 2898 AD</h3>
                         <p class="movie-genre">Sci-Fi / Action</p>
                     </div>
                 </div>
-            </div>
-            <div class="movie-card fade-in" style="transition-delay: 0.2s;">
-                <div class="movie-poster" style="background-image: url('https://images.unsplash.com/photo-1574281358312-706a8afd1181?q=80&w=1974&auto=format&fit=crop');">
+            </a>
+            <a href="https://www.imdb.com/title/tt12443008/" target="_blank" class="movie-card fade-in" style="transition-delay: 0.2s;">
+                <div class="movie-poster" style="background-image: url('https://i.ibb.co/vVjT8zN/color-photo-poster.jpg');">
                     <div class="movie-label">Color Photo</div>
                      <div class="movie-overlay">
                         <h3 class="movie-title">Color Photo</h3>
                         <p class="movie-genre">Drama / Romance</p>
                     </div>
                 </div>
-            </div>
-            <div class="movie-card fade-in" style="transition-delay: 0.4s;">
-                <div class="movie-poster" style="background-image: url('https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=1974&auto=format&fit=crop');">
-                     <div class="movie-label">Pushpa</div>
+            </a>
+            <a href="https://www.imdb.com/title/tt9389998/" target="_blank" class="movie-card fade-in" style="transition-delay: 0.4s;">
+                <div class="movie-poster" style="background-image: url('https://i.ibb.co/3k5fTq8/pushpa-poster.jpg');">
+                     <div class="movie-label">Pushpa: The Rise</div>
                      <div class="movie-overlay">
-                        <h3 class="movie-title">Pushpa</h3>
+                        <h3 class="movie-title">Pushpa: The Rise</h3>
                         <p class="movie-genre">Action / Thriller</p>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
     <section id="videos" class="section">
         <h2 class="section-title fade-in">Latest Videos</h2>
         <div class="videos-grid">
-            <div class="video-card fade-in">
-                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1598797834304-a6949b98687a?q=80&w=2070&auto=format&fit=crop');">
+            <div class="video-card fade-in" data-youtube-id="clU8XX843iE">
+                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/clU8XX843iE/maxresdefault.jpg');">
                     <div class="play-button"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Behind the Scenes of 'Mirage'</h3>
-                    <p class="video-channel">SPAARK TALKS Originals</p>
+                    <h3 class="video-title">Kalki 2898 AD Trailer</h3>
+                    <p class="video-channel">Official Trailers</p>
                 </div>
             </div>
-            <div class="video-card fade-in" style="transition-delay: 0.2s;">
-                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1517604931442-7e0c8ed29636?q=80&w=2070&auto=format&fit=crop');">
+            <div class="video-card fade-in" style="transition-delay: 0.2s;" data-youtube-id="Q1NKMPhP8PY">
+                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/Q1NKMPhP8PY/maxresdefault.jpg');">
                     <div class="play-button"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Director Interview: The Art of Storytelling</h3>
-                    <p class="video-channel">Filmmaker Spotlight</p>
+                    <h3 class="video-title">Pushpa: The Rise Trailer</h3>
+                    <p class="video-channel">Official Trailers</p>
                 </div>
             </div>
         </div>
@@ -764,43 +795,30 @@
                         <label for="fullName" class="field-label">Full Name <span class="required-star">*</span></label>
                         <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
                     </div>
-
                     <div class="field-section">
                         <label for="email" class="field-label">Email Address <span class="required-star">*</span></label>
                         <input type="email" id="email" name="email" placeholder="you@example.com" required>
                     </div>
-
                     <div class="field-section">
                         <label for="phone" class="field-label">Mobile Number <span class="required-star">*</span></label>
                         <input type="tel" id="phone" name="phone" placeholder="Your 10-digit mobile number" required>
                     </div>
-                    
                     <div class="field-section">
                         <label for="filmTitle" class="field-label">Film Title <span class="required-star">*</span></label>
                         <input type="text" id="filmTitle" name="filmTitle" placeholder="The title of your film" required>
                     </div>
-                    
                     <div class="field-section">
                         <label for="genre" class="field-label">Genre <span class="required-star">*</span></label>
                         <select id="genre" name="genre" required>
                             <option value="" disabled selected>Select a genre</option>
-                            <option value="Action">Action</option>
-                            <option value="Comedy">Comedy</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Horror">Horror</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Sci-Fi">Sci-Fi</option>
-                            <option value="Thriller">Thriller</option>
-                            <option value="Other">Other</option>
+                            <option value="Action">Action</option><option value="Comedy">Comedy</option><option value="Drama">Drama</option><option value="Horror">Horror</option><option value="Romance">Romance</option><option value="Sci-Fi">Sci-Fi</option><option value="Thriller">Thriller</option><option value="Other">Other</option>
                         </select>
                     </div>
-
                     <div class="field-section">
                         <label for="synopsis" class="field-label">Synopsis / Logline <span class="required-star">*</span></label>
                         <textarea id="synopsis" name="synopsis" placeholder="Briefly describe your concept (max 2-3 paragraphs)" required></textarea>
                     </div>
-                    
-                    <div class="field-section">
+                     <div class="field-section">
                         <label class="field-label">Concept Document / Script (PDF, DOCX) <span class="required-star">*</span></label>
                         <label for="fileUpload" class="file-upload-section">
                              <div class="file-icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -808,7 +826,6 @@
                         </label>
                         <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.doc,.docx" required>
                     </div>
-
                     <div class="checkbox-section">
                         <div class="checkbox-container">
                              <input type="checkbox" id="agreement" name="agreement" required>
@@ -817,14 +834,11 @@
                              </label>
                         </div>
                     </div>
-                    
                      <div class="required-note">* Indicates required question</div>
-
                     <div class="button-section">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-secondary">Clear form</button>
                     </div>
-
                     <div class="footer-disclaimer">
                         Never submit passwords through this form. <br>
                         This content is created and maintained by SPAARK TALKS.
@@ -848,102 +862,96 @@
             </div>
         </div>
     </footer>
+    
+    <div class="video-modal-overlay" id="videoModal">
+        <div class="video-modal-content">
+            <span class="close-modal" id="closeModalBtn">&times;</span>
+            <iframe id="youtubePlayer" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
     // --- Scroll Fade-in Animation ---
     const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {
-        threshold: 0.2, // Trigger when 20% of the element is visible
-        rootMargin: "0px 0px -50px 0px" // Start animating a bit before it's fully in view
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                appearOnScroll.unobserve(entry.target); // Stop observing once it's visible
+                observer.unobserve(entry.target);
             }
         });
     }, appearOptions);
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
-    
-    // --- Smooth Scrolling for Nav Links ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if(targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    faders.forEach(fader => appearOnScroll.observe(fader));
 
     // --- File Input UI Update ---
     const fileInput = document.getElementById('fileUpload');
     const fileNameDisplay = document.getElementById('file-name-display');
-    
-    fileInput.addEventListener('change', function() {
-        if (this.files && this.files.length > 0) {
-            fileNameDisplay.textContent = this.files[0].name;
-        } else {
-            fileNameDisplay.textContent = 'Click to upload your file';
-        }
-    });
+    if(fileInput) {
+        fileInput.addEventListener('change', function() {
+            fileNameDisplay.textContent = this.files.length > 0 ? this.files[0].name : 'Click to upload your file';
+        });
+    }
 
     // --- Form Submission Handling ---
     const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Stop the form from submitting the traditional way
-
-        // Basic validation check
-        let isValid = form.checkValidity();
-        if (!isValid) {
-            // If you want more advanced validation, you can add messages here
-            alert('Please fill out all required fields.');
-            return;
-        }
-
-        // Create a FormData object from the form
-        const formData = new FormData(form);
-
-        // --- DEMONSTRATION: Log data to console ---
-        // In a real application, you would send this 'formData' to a server
-        // using the fetch API.
-        
-        console.log('--- Form Submission Data ---');
-        for (let [key, value] of formData.entries()) {
-            if (value instanceof File) {
-                console.log(`${key}: ${value.name} (Size: ${value.size} bytes)`);
-            } else {
-                console.log(`${key}: ${value}`);
+    if(form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (!form.checkValidity()) {
+                alert('Please fill out all required fields correctly.');
+                return;
             }
-        }
-        console.log('----------------------------');
-
-        // Show a success message and reset the form
-        alert('Thank you for your submission! We will review your concept and get back to you soon.');
-        form.reset();
-        fileNameDisplay.textContent = 'Click to upload your file';
-    });
-    
-    // --- Form Reset Handling ---
-    form.addEventListener('reset', function() {
-        // Delay resetting the file name display to ensure the form fields clear first
-        setTimeout(() => {
+            const formData = new FormData(form);
+            console.log('--- Form Submission Data ---');
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value instanceof File ? value.name : value}`);
+            }
+            console.log('----------------------------');
+            alert('Thank you for your submission! We will get back to you soon.');
+            form.reset();
             fileNameDisplay.textContent = 'Click to upload your file';
-        }, 0);
+        });
+        form.addEventListener('reset', () => {
+             setTimeout(() => fileNameDisplay.textContent = 'Click to upload your file', 0);
+        });
+    }
+    
+    // --- Video Modal Logic ---
+    const videoModal = document.getElementById('videoModal');
+    const youtubePlayer = document.getElementById('youtubePlayer');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const videoCards = document.querySelectorAll('.video-card');
+
+    function openModal(youtubeId) {
+        youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+        videoModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        youtubePlayer.src = ''; // Stop the video
+        videoModal.style.display = 'none';
+    }
+
+    videoCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const youtubeId = card.getAttribute('data-youtube-id');
+            if (youtubeId) {
+                openModal(youtubeId);
+            }
+        });
     });
 
+    closeModalBtn.addEventListener('click', closeModal);
+    // Close modal if user clicks on the overlay background
+    videoModal.addEventListener('click', (event) => {
+        if (event.target === videoModal) {
+            closeModal();
+        }
+    });
 });
 </script>
 
